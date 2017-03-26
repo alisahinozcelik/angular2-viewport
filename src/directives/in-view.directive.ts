@@ -6,7 +6,7 @@ import { TriggerService } from '../services';
 
 const SELECTOR = 'vp-in-view';
 
-interface IConfig {
+export interface IConfig {
 	infinite?: boolean;
 	margin?: number;
 	marginHorizontal?: number;
