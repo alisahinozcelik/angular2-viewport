@@ -5,7 +5,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const del = require('del');
 const runSequence = require('run-sequence');
 
-const tsProject = ts.createProject('tsconfig.json');
+const tsProject = ts.createProject('tsconfig.json', {removeComments: false});
 
 gulp.task('clean', () => {
 	return del('dist');
