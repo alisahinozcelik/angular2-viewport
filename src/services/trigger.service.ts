@@ -5,7 +5,7 @@ import { ScrollService } from './scroll.service';
 
 @Injectable()
 export class TriggerService {
-	private _subj = new Subject();
+	private _subj = new Subject<any>();
 	public observable = this._subj.share();
 
 	constructor(scroll: ScrollService) {
