@@ -6,8 +6,8 @@ const BUFFER_TIME = 100;
 
 @Injectable()
 export class ScrollService {
-	private _subj: Subject<any> = new Subject();
-	public observable: Observable<any>;
+	private _subj: Subject<{}> = new Subject();
+	public observable: Observable<{}>;
 	private boundSet = new Set<EventTarget>();
 	private handler: EventListener;
 
