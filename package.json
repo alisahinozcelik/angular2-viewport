@@ -1,0 +1,26 @@
+{
+  "name": "angular2-viewport",
+  "version": "1.0.0",
+  "description": "Angular 2 Viewport Directives & Services",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "viewport",
+    "inview",
+    "in-view",
+    "directive",
+    "service"
+  ],
+  "author": "alisahinozcelik@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/core": "^4.0.0",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.2.0",
+    "zone.js": "^0.8.5"
+  }
+}
