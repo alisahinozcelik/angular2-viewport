@@ -7,12 +7,12 @@ import { ScrollService } from '../services';
 })
 export class ScrollableContentDirective {
 	@Input('vp-scrollable-content')
-	protected targetSelector: string;
-	protected scrollTarget: HTMLElement;
+	private targetSelector: string;
+	private scrollTarget: HTMLElement;
 
 	constructor(
-		protected el: ElementRef,
-		protected scroll: ScrollService
+		private el: ElementRef,
+		private scroll: ScrollService
 	) {}
 
 	ngAfterViewInit() {

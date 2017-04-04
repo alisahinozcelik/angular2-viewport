@@ -9,9 +9,7 @@ export class TriggerService {
 	public observable = this._subj.share();
 
 	constructor(scroll: ScrollService) {
-		scroll.observable.subscribe(() => {
-			this._subj.next();
-		});
+		this.bind(scroll.onScroll);
 	}
 
 	public bind(obs: Observable<{}>):Subscription {
