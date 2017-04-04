@@ -27,3 +27,10 @@ gulp.task('_publish', () => {
 gulp.task('publish', callback => {
 	runSequence('clean', '_publish', callback);
 });
+
+gulp.task('dev', () => {
+	runSequence('clean', '_publish', () => {
+		console.log('Watching ts files');
+		gulp.watch('src/**/*.ts', ['_publish']);
+	});
+});
