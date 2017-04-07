@@ -18,17 +18,18 @@ export interface IConfig {
 }
 
 @Directive({
-	selector: `[${SELECTOR}]`
+	selector: `[${SELECTOR}]`,
+	exportAs: SELECTOR
 })
 export class InViewDirective {
 	private _config = new Config({});
 	@Output(SELECTOR)
-	private event = new EventEmitter();
+	public event = new EventEmitter();
 	private subs: Subscription;
 
 	constructor(
 		private trigger: TriggerService,
-		private el: ElementRef
+		public el: ElementRef
 	) {
 	}
 
