@@ -8,19 +8,33 @@ import { ScrollService } from '../services';
 export class ScrollableContentDirective {
 	@Input('vp-scrollable-content')
 	private targetSelector: string;
-	private scrollTarget: HTMLElement;
+	private scrollTargets: HTMLElement[] = [];
 
 	constructor(
 		private el: ElementRef,
 		private scroll: ScrollService
 	) {}
 
-	ngAfterViewInit() {
-		this.scrollTarget = this.targetSelector ? this.el.nativeElement.querySelector(this.targetSelector) : this.el.nativeElement;
-		this.scroll.bind(this.scrollTarget);
+	private ngAfterViewInit():void {
+
+		if (this.targetSelector) {
+			const list: HTMLElement[] = Array.prototype.slice.call(this.el.nativeElement.querySelectorAll(this.targetSelector));
+
+			this.scrollTargets.push(...list);
+			!list.length && this.scrollTargets.push(this.el.nativeElement);
+		}
+		else {
+			this.scrollTargets.push(this.el.nativeElement);
+		}
+
+		this.scrollTargets.forEach(el => {
+			this.scroll.bind(el);
+		});
 	}
 
-	ngOnDestroy() {
-		this.scroll.unbind(this.scrollTarget);
+	private ngOnDestroy():void {
+		this.scrollTargets.forEach(el => {
+			this.scroll.unbind(el);
+		});
 	}
 }
