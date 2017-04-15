@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
-import { throttler } from '../helpers';
+import { throttler } from '../utils';
 
 const BUFFER_TIME = 100;
 const DEBOUNCE_TIME = 180;
