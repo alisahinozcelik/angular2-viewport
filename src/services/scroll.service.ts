@@ -43,7 +43,7 @@ export class ScrollService {
 	 * 
 	 * Returns the unbinding function
 	 */
-	public bind(target: EventTarget): Function {
+	public bind(target: EventTarget): () => void {
 		if (!this.boundSet.has(target)) {
 			target.addEventListener('scroll', this.handler);
 			this.boundSet.add(target);
