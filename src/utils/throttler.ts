@@ -5,18 +5,23 @@ export function throttler<T>(observable: Observable<T>, throttleTime: number):Ob
 	let timeout: number | boolean = false;
 	let allowed = true;
 
-	observable.subscribe(e => {
-		timeout && clearTimeout(timeout as number);
+	observable.subscribe({
+		next: e => {
+			timeout && clearTimeout(timeout as number);
 
-		if (allowed) {
-			allowed = false;
-			subj.next(e);
-		}
+			if (allowed) {
+				allowed = false;
+				subj.next(e);
+			}
 
-		timeout = setTimeout(handler, throttleTime);
+			timeout = setTimeout(handler, throttleTime);
 
-		function handler() {
-			allowed = true;
+			function handler() {
+				allowed = true;
+			}
+		},
+		complete: () => {
+			subj.complete();
 		}
 	});
 

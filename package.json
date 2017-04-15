@@ -10,7 +10,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "karma start ./tasks/karma/karma.conf.js",
-    "prepublish": "gulp publish",
+    "prepublish": "npm test && gulp publish",
     "serve": "concurrently --kill-others \"webpack-dev-server --config playground/webpack.js\" \"gulp dev\"",
     "push": "node tasks/push"
   },
