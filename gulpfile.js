@@ -12,7 +12,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('_publish', () => {
-	const stream = gulp.src('src/**/*.ts')
+	const stream = gulp.src('src/**/!(*.spec).ts')
 		.pipe(sourcemaps.init())
 		.pipe(tsProject());
 	

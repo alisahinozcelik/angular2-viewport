@@ -48,6 +48,9 @@ export class ScrollService {
 			target.addEventListener('scroll', this.handler);
 			this.boundSet.add(target);
 		}
+		else {
+			console.warn("The element had been bound by another call before, try to avoid binding more than once", target);
+		}
 
 		return this.unbind.bind(this, target);
 	}
@@ -56,8 +59,13 @@ export class ScrollService {
 	 * Removes its listener from the target
 	 */
 	public unbind(target: EventTarget):void {
-		this.boundSet.delete(target);
-		target.removeEventListener('scroll', this.handler);
+		if (this.boundSet.has(target)) {
+			this.boundSet.delete(target);
+			target.removeEventListener('scroll', this.handler);
+		}
+		else {
+			console.warn("The element is not bound, maybe its been unbound by another call or never bound before", target);
+		}
 	}
 
 	private static _handler(this: ScrollService, e:Event):void {

@@ -1,6 +1,6 @@
 {
   "name": "angular2-viewport",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Angular 2 Viewport Directives & Services",
   "repository": {
     "type": "git",
@@ -51,9 +51,8 @@
     "karma": "^1.6.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-edge-launcher": "^0.4.1",
-    "karma-ie-launcher": "^1.0.0",
+    "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.3",
     "merge2": "^1.0.3",

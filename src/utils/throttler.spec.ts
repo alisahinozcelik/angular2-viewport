@@ -26,7 +26,7 @@ describe('Function: throttler', () => {
 		const throttled = throttler(obs, 150);
 
 		const subs = throttled.single().subscribe({
-			error: () => {throw new Error('it shouldn\'t emit in throttling time, emitted more than once');},
+			error: () => {fail();},
 			complete: () => {done();}
 		});
 	});

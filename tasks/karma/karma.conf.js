@@ -1,8 +1,8 @@
 module.exports = config => {
 	config.set({
 		autoWatch: true,
-		// browsers: ['PhantomJS', 'Chrome', 'IE', 'IE10', 'Edge'],
-		browsers: ['PhantomJS'],
+		browsers: ['Chrome', 'Edge', 'Firefox'],
+		// browsers: ['PhantomJS'],
 		basePath: './',
 		files: [
 			'../../node_modules/es6-shim/es6-shim.min.js',
