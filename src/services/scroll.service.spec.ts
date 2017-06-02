@@ -149,11 +149,11 @@ describe("Service: ScrollService", () => {
 
 			scrollService.bind(element);
 
-			var scroller = Observable.interval(200).take(3);
+			var scroller = Observable.interval(200).take(5);
 
-			const subs1 = scrollService.onScroll.subscribe(e => {emitted++;});
+			const subs1 = scrollService.onScroll.first().subscribe(e => {scrollService.unbind(element)});
 
-			const subs2 = scroller.first().subscribe(() => {scrollService.unbind(element);});
+			const subs2 = scrollService.onScroll.subscribe(e => {emitted++;});
 
 			const subs3 = scroller.subscribe({
 				next: e => {scrollTo(element, (e+1) * 500);},
