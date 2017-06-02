@@ -46,9 +46,13 @@ export class InViewDirective {
 
 	ngAfterViewInit() {
 		defer(() => {
-			this.subs = this.trigger.observable.subscribe(this.handler.bind(this));
-			this.handler();
+			this.subs = this.trigger.observable.subscribe(InViewDirective.handler.bind(this));
+			InViewDirective.handler.call(this);
 		});
+	}
+
+	ngOnDestroy() {
+		this.subs.unsubscribe();
 	}
 
 	private isInViewPort():boolean {
@@ -62,7 +66,7 @@ export class InViewDirective {
 		);
 	}
 
-	private handler():void {
+	private static handler(this: InViewDirective):void {
 		if (this.isInViewPort()) {
 			this.event.emit();
 			!this.config.infinite && this.subs.unsubscribe();
